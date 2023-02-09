@@ -37,6 +37,8 @@ layout = [
 ]
 
 window = sg.Window(version, layout, margins=(50, 50), resizable=True)
+
+
 def selecionar():
     Tk().withdraw()
     file_path = askopenfilename(filetypes = (("Text files", "*.txt"), ("CSV files", "*.csv")))
@@ -86,19 +88,22 @@ def search_student():
             with open("resultado.txt", "r") as f:
                 file_exibir = f.read()
                 
-            layout3 = [
+            layout2 = [
                 [sg.Text('Log Aluno')],
                 [sg.Multiline(file_exibir,size=(WIN_W, WIN_H))],
-                [sg.Button('Exit')]
+                [sg.Button('Cancel')]
             ]
-            janela3 = sg.Window(version, layout3)
-            while True:
-                eventos = janela3.read()
-                if eventos == sg.WIN_CLOSED or eventos == 'Exit':
-                    janela3.close()
-                    janela.close()
-                    os.remove("resultado.txt")
-                    break
+            try:
+                janela2 = sg.Window(version, layout2)
+                event1 = janela2.read()
+                if event1 in (None, 'Exit'):
+                    janela2.close()
+                    return True
+                elif event1 == 'Cancel':
+                    janela2.close()
+                    return True
+            except:
+                sg.popup("Error closing window3.")
 
 while True:
     eventos, valores = window.read()
@@ -108,6 +113,7 @@ while True:
         sg.popup(sobre)
     if eventos == pesquisar:
         search_student()
+        os.remove("./resultado.txt")
     if eventos == diretorio:
         file_path = selecionar()
 
