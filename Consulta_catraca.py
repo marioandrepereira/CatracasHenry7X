@@ -19,7 +19,7 @@ sg.theme('LightGrey6')
 WIN_W = 90
 WIN_H = 25
 
-# String variables to reduce loop and menu code!
+
 pesquisar = "Consultar_Alunos"
 diretorio: str = "Diretorio"
 version = "Catracas"
@@ -45,16 +45,16 @@ def selecionar():
     return file_path
 
 def search_student():
-    # Define the layout of the GUI
+    
     layout = [
         [sg.Text('Insira o RA do Aluno:')],
         [sg.InputText()],
         [sg.Button('Search'), sg.Button('Cancel')]
     ]
 
-    # Create the window
+    
     janela = sg.Window('Consulta RA', layout)
-    # Loop to continuously read the values in the window
+    
     while True:
         event, values = janela.read()
         if event in (None, 'Exit'):
@@ -65,8 +65,7 @@ def search_student():
             break
         elif values[0] != None:
             ra = values[0]
-            # Check if a file is selected
-            # Read the database
+
         with open(file_path, 'r') as f:
             lines = f.readlines()
         
