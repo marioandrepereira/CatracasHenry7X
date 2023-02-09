@@ -1,5 +1,6 @@
 # CatracasHenry7X
 Código voltado a leitura de dados de catracas Henry7x
+
 The code imports the PySimpleGUI library and the Tkinter library for GUI creation and file dialog. The Tkinter library is used to open a file dialog box to select a file, which is stored in the "file_path" variable. The file must be a .txt or .csv file.
 
 The layout of the GUI is created using PySimpleGUI, with a menu bar at the top, a text field in the middle, and an image at the bottom. The menu bar has two options: "Pesquisar" and "Ajuda". "Pesquisar" has three sub-options: "Consultar_Alunos", "Diretorio", and "Exit". "Ajuda" has one sub-option: "Sobre".
